@@ -1,5 +1,3 @@
-//! A minimal CLI that reports the version it was built from.
-
 const VERSION: &str = env!("CARGO_PKG_VERSION");
 const COMMIT: &str = env!("GIT_COMMIT");
 const BUILD_DATE: &str = env!("BUILD_DATE");

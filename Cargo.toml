@@ -10,7 +10,6 @@ publish = false
 [dependencies]
 
 [package.metadata.dist]
-# Release this binary with cargo-dist even though it is not published to crates.io.
 dist = true
 
 [profile.release]
@@ -18,7 +17,6 @@ codegen-units = 1
 lto = "thin"
 strip = true
 
-# The profile that 'dist' will build with
 [profile.dist]
 inherits = "release"
 lto = "thin"

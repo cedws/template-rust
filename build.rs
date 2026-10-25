@@ -1,8 +1,3 @@
-//! Embeds the git commit and build timestamp in the binary.
-//!
-//! Both can be supplied externally (`GIT_COMMIT`, `SOURCE_DATE_EPOCH`) so that
-//! builds without a `.git` directory, such as container builds, stay useful.
-
 use std::env;
 use std::process::Command;
 use std::time::{SystemTime, UNIX_EPOCH};
@@ -58,7 +53,6 @@ fn format_utc(epoch: u64) -> String {
     format!("{year:04}-{month:02}-{day:02}T{hour:02}:{minute:02}:{second:02}Z")
 }
 
-/// Converts days since the Unix epoch to a civil date (Howard Hinnant's algorithm).
 fn civil_from_days(days: i64) -> (i64, u32, u32) {
     let z = days + 719_468;
     let era = if z >= 0 { z } else { z - 146_096 } / 146_097;
