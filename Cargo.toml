@@ -1,0 +1,31 @@
+[package]
+name = "template-rust"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.85"
+description = "A small, batteries-included Rust binary template"
+repository = "https://github.com/cedws/template-rust"
+publish = false
+
+[dependencies]
+
+[package.metadata.dist]
+# Release this binary with cargo-dist even though it is not published to crates.io.
+dist = true
+
+[profile.release]
+codegen-units = 1
+lto = "thin"
+strip = true
+
+# The profile that 'dist' will build with
+[profile.dist]
+inherits = "release"
+lto = "thin"
+
+[lints.rust]
+unsafe_code = "forbid"
+
+[lints.clippy]
+all = { level = "warn", priority = -1 }
+unwrap_used = "warn"
